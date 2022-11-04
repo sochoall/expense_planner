@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
         id: 't2',
         title: 'Weekly Groceries',
         amount: 15.53,
-        date: DateTime.now())
+        date: DateTime.now()),
   ];
   MyApp({super.key});
 
@@ -39,17 +39,41 @@ class MyApp extends StatelessWidget {
                 children: transactions.map((e) {
                   return Card(
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        SizedBox(
-                          child: Text(e.amount.toString()),
+                        Container(
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.purple,
+                              width: 2,
+                            ),
+                          ),
+                          padding: const EdgeInsets.all(10),
+                          child: Text(
+                            e.amount.toString(),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.purple,
+                            ),
+                          ),
                         ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(e.title),
-                            Text(e.date.toString())
+                            Text(
+                              e.title,
+                              textAlign: TextAlign.left,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                            Text(e.date.toString(),
+                                style: const TextStyle(color: Colors.grey))
                           ],
-                        )
+                        ),
                       ],
                     ),
                   );
