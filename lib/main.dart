@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './transaction.dart';
+import 'package:intl/intl.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
             title: const Text('Material App Bar'),
           ),
           body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               const SizedBox(
@@ -33,6 +34,22 @@ class MyApp extends StatelessWidget {
                   color: Colors.amber,
                   elevation: 5,
                   child: Text("CHART!"),
+                ),
+              ),
+              Card(
+                elevation: 5,
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: const <Widget>[
+                      TextField(
+                        decoration: InputDecoration(labelText: "Title"),
+                      ),
+                      TextField(
+                        decoration: InputDecoration(labelText: "Amount"),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Column(
@@ -51,7 +68,7 @@ class MyApp extends StatelessWidget {
                           ),
                           padding: const EdgeInsets.all(10),
                           child: Text(
-                            e.amount.toString(),
+                            "\$${e.amount}",
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
@@ -70,8 +87,11 @@ class MyApp extends StatelessWidget {
                                 fontSize: 16,
                               ),
                             ),
-                            Text(e.date.toString(),
-                                style: const TextStyle(color: Colors.grey))
+                            Text(
+                              // DateFormat('yyyy-MM-dd').format(e.date),
+                              DateFormat.yMMMd().format(e.date),
+                              style: const TextStyle(color: Colors.grey),
+                            )
                           ],
                         ),
                       ],
