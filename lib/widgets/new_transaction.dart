@@ -38,6 +38,9 @@ class _NewTransactionState extends State<NewTransaction> {
             TextField(
               decoration: const InputDecoration(labelText: "Title"),
               controller: titleController,
+              style: const TextStyle(
+                fontFamily: 'Open Sans',
+              ),
               // onChanged: (val) {
               //   titleInput = val;
               // },
@@ -46,6 +49,9 @@ class _NewTransactionState extends State<NewTransaction> {
               decoration: const InputDecoration(labelText: "Amount"),
               controller: amountController,
               keyboardType: TextInputType.number,
+              style: const TextStyle(
+                fontFamily: 'Open Sans',
+              ),
               onSubmitted: (_) =>
                   submitData, //when forced to use and arg not needed we use (_)
               // onChanged: (val) => titleInput = val,
@@ -55,7 +61,12 @@ class _NewTransactionState extends State<NewTransaction> {
               style: const ButtonStyle(
                   foregroundColor:
                       MaterialStatePropertyAll<Color>(Colors.purple)),
-              child: const Text("Add Transaction"),
+              child: const Text(
+                "Add Transaction",
+                style: TextStyle(
+                  fontFamily: 'Open Sans',
+                ),
+              ),
             )
           ],
         ),
