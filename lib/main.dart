@@ -3,16 +3,19 @@ import './widgets/new_transaction.dart';
 import 'package:flutter/material.dart';
 import './models/transaction.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Flutter App',
-      home: MyHomePage(),
+    return MaterialApp(
+      title: 'Personal Expenses',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: const MyHomePage(),
     );
   }
 }
@@ -50,45 +53,42 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-          actions: <Widget>[
-            IconButton(
-                onPressed: () => _startAddNewTransaction(context),
-                icon: const Icon(
-                  Icons.add,
-                  color: Colors.white,
-                ))
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Personal Expenses'),
+        actions: <Widget>[
+          IconButton(
+              onPressed: () => _startAddNewTransaction(context),
+              icon: const Icon(
+                Icons.add,
+                color: Colors.white,
+              ))
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            const SizedBox(
+              width: double.infinity,
+              child: Card(
+                color: Colors.amber,
+                elevation: 5,
+                child: Text("CHART!"),
+              ),
+            ),
+            TransactionList(_userTransactions),
           ],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              const SizedBox(
-                width: double.infinity,
-                child: Card(
-                  color: Colors.amber,
-                  elevation: 5,
-                  child: Text("CHART!"),
-                ),
-              ),
-              TransactionList(_userTransactions),
-            ],
-          ),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: Builder(builder: (context) {
-          return FloatingActionButton(
-            onPressed: () => _startAddNewTransaction(context),
-            child: const Icon(Icons.add),
-          );
-        }),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Builder(builder: (context) {
+        return FloatingActionButton(
+          onPressed: () => _startAddNewTransaction(context),
+          child: const Icon(Icons.add),
+        );
+      }),
     );
   }
 }
