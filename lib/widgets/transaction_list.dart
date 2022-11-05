@@ -16,7 +16,10 @@ class TransactionList extends StatelessWidget {
               children: <Widget>[
                 const Text(
                   "No transaction added yet!",
-                  style: TextStyle(fontFamily: 'Open Sans'),
+                  style: TextStyle(fontFamily: 'Open Sans', fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 60,
                 ),
                 SizedBox(
                   height: 200,
