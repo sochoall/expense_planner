@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
               error: Colors.red,
               onError: Colors.white,
               background: Colors.pink,
-              onBackground: Colors.black,
-              surface: Colors.black,
-              onSurface: Colors.grey),
+              onBackground: Colors.white,
+              surface: Colors.yellow,
+              onSurface: Colors.black),
           fontFamily: 'Quicksand',
           textTheme: ThemeData.light().textTheme.copyWith(
                 headline1: const TextStyle(
@@ -63,13 +63,12 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addNewTransaction(String txTitle, double txAmount) {
+  void _addNewTransaction(String txTitle, double txAmount, DateTime choseDate) {
     final newTx = Transaction(
-      id: DateTime.now().toString(),
-      title: txTitle,
-      amount: txAmount,
-      date: DateTime.now(),
-    );
+        id: DateTime.now().toString(),
+        title: txTitle,
+        amount: txAmount,
+        date: choseDate);
 
     setState(() {
       _userTransactions.add(newTx);
