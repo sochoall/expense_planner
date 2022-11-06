@@ -14,9 +14,31 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
-        primarySwatch: Colors.green,
-        fontFamily: 'Quicksand',
-      ),
+          primarySwatch: Colors.green,
+          colorScheme: const ColorScheme(
+              brightness: Brightness.light,
+              primary: Colors.green,
+              onPrimary: Colors.white,
+              secondary: Colors.amber,
+              onSecondary: Colors.white,
+              error: Colors.red,
+              onError: Colors.white,
+              background: Colors.pink,
+              onBackground: Colors.black,
+              surface: Colors.black,
+              onSurface: Colors.grey),
+          fontFamily: 'Quicksand',
+          textTheme: ThemeData.light().textTheme.copyWith(
+                headline1: const TextStyle(
+                    fontFamily: "Open Sans",
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              ),
+          appBarTheme: const AppBarTheme(
+              titleTextStyle: TextStyle(
+                  fontFamily: "Open Sans",
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold))),
       home: const MyHomePage(),
     );
   }
