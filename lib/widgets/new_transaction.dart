@@ -38,9 +38,6 @@ class _NewTransactionState extends State<NewTransaction> {
             TextField(
               decoration: const InputDecoration(labelText: "Title"),
               controller: titleController,
-              style: const TextStyle(
-                fontFamily: 'Open Sans',
-              ),
               // onChanged: (val) {
               //   titleInput = val;
               // },
@@ -49,23 +46,36 @@ class _NewTransactionState extends State<NewTransaction> {
               decoration: const InputDecoration(labelText: "Amount"),
               controller: amountController,
               keyboardType: TextInputType.number,
-              style: const TextStyle(
-                fontFamily: 'Open Sans',
-              ),
               onSubmitted: (_) =>
-                  submitData, //when forced to use and arg not needed we use (_)
-              // onChanged: (val) => titleInput = val,
+                  submitData(), //when forced to use and arg thats not needed we
+              //use (_)
             ),
-            TextButton(
+            SizedBox(
+              height: 70,
+              child: Row(
+                children: <Widget>[
+                  // const Text(
+                  //   "No Date Chosen!",
+                  // ),
+                  TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        "Chose Date",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ))
+                ],
+              ),
+            ),
+            ElevatedButton(
               onPressed: submitData,
-              style: const ButtonStyle(
-                  foregroundColor:
-                      MaterialStatePropertyAll<Color>(Colors.purple)),
+              // style: const ButtonStyle(
+              //     backgroundColor:
+              //         MaterialStatePropertyAll<Color>(Colors.green),
+              //     foregroundColor:
+              //         MaterialStatePropertyAll<Color>(Colors.white)),
               child: const Text(
                 "Add Transaction",
-                style: TextStyle(
-                  fontFamily: 'Open Sans',
-                ),
+                style: TextStyle(fontFamily: 'Open Sans'),
               ),
             )
           ],
