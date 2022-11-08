@@ -49,61 +49,67 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            TextField(
-              decoration: const InputDecoration(labelText: "Title"),
-              controller: _titleController,
-              // onChanged: (val) {
-              //   titleInput = val;
-              // },
-            ),
-            TextField(
-              decoration: const InputDecoration(labelText: "Amount"),
-              controller: _amountController,
-              keyboardType: TextInputType.number,
-              onSubmitted: (_) =>
-                  _submitData(), //when forced to use and arg thats not needed we
-              //use (_)
-            ),
-            SizedBox(
-              height: 70,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Text(
-                      _selectedDate == null
-                          ? "No Date Chosen!"
-                          : 'PickeDate: ${DateFormat.yMd().format(_selectedDate!)}',
+    return SingleChildScrollView(
+      child: Card(
+        elevation: 5,
+        child: Container(
+          padding: EdgeInsets.only(
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              TextField(
+                decoration: const InputDecoration(labelText: "Title"),
+                controller: _titleController,
+                // onChanged: (val) {
+                //   titleInput = val;
+                // },
+              ),
+              TextField(
+                decoration: const InputDecoration(labelText: "Amount"),
+                controller: _amountController,
+                keyboardType: TextInputType.number,
+                onSubmitted: (_) =>
+                    _submitData(), //when forced to use and arg thats not needed we
+                //use (_)
+              ),
+              SizedBox(
+                height: 70,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(
+                        _selectedDate == null
+                            ? "No Date Chosen!"
+                            : 'PickeDate: ${DateFormat.yMd().format(_selectedDate!)}',
+                      ),
                     ),
-                  ),
-                  TextButton(
-                      onPressed: _presentDatePicker,
-                      child: const Text(
-                        "Chose Date",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ))
-                ],
+                    TextButton(
+                        onPressed: _presentDatePicker,
+                        child: const Text(
+                          "Chose Date",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ))
+                  ],
+                ),
               ),
-            ),
-            ElevatedButton(
-              onPressed: _submitData,
-              // style: const ButtonStyle(
-              //     backgroundColor:
-              //         MaterialStatePropertyAll<Color>(Colors.green),
-              //     foregroundColor:
-              //         MaterialStatePropertyAll<Color>(Colors.white)),
-              child: const Text(
-                "Add Transaction",
-                style: TextStyle(fontFamily: 'Open Sans'),
-              ),
-            )
-          ],
+              ElevatedButton(
+                onPressed: _submitData,
+                // style: const ButtonStyle(
+                //     backgroundColor:
+                //         MaterialStatePropertyAll<Color>(Colors.green),
+                //     foregroundColor:
+                //         MaterialStatePropertyAll<Color>(Colors.white)),
+                child: const Text(
+                  "Add Transaction",
+                  style: TextStyle(fontFamily: 'Open Sans'),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
