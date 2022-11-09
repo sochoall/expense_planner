@@ -90,6 +90,19 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Widget _buildListContent() {
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Chart(_recentTransactions),
+          TransactionList(_userTransactions, _deleteTransaction),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,16 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ))
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Chart(_recentTransactions),
-            TransactionList(_userTransactions, _deleteTransaction),
-          ],
-        ),
-      ),
+      body: _buildListContent(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Builder(builder: (context) {
         return FloatingActionButton(
