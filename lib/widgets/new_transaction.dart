@@ -68,7 +68,7 @@ class _NewTransactionState extends State<NewTransaction> {
               controller: _amountController,
               keyboardType: TextInputType.number,
               onSubmitted: (_) =>
-                  _submitData(), //when forced to use and arg thats not needed we
+                  _submitData(), //when forced to use and arg we don't need we
               //use (_)
             ),
             SizedBox(
